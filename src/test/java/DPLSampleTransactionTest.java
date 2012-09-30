@@ -36,15 +36,13 @@ public class DPLSampleTransactionTest {
         EntityStore entityStore =
                 new EntityStore(environment, "BDBJEDPLSample", storeConfig);
 
-        tx.commit();
-
         PrimaryIndex<Integer, Employee> employeePrimaryIndex =
                 entityStore.getPrimaryIndex(Integer.class, Employee.class);
 
+        employeePrimaryIndex.putNoReturn( new Employee(12,"francois", "ostyn", null));
 
+        tx.commit();
 
-        employeePrimaryIndex.putNoReturn(
-                new Employee(12,"francois", "ostyn", null));
 
 
 
